@@ -1,0 +1,226 @@
+:root {
+  --text-dark: #133b5c;
+  --accent: #168aad;
+  --accent-2: #34a0a4;
+  --ink: #1b1b1b;
+  --glass: #ffffffb3; /* translucent white */
+  --maxw: 1160px;
+  --radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  color: var(--ink);
+  background: radial-gradient(
+      1000px 600px at 20% -10%,
+      #a1c4fd 0%,
+      #c2e9fb 40%,
+      transparent 70%
+    ),
+    radial-gradient(
+      1000px 600px at 80% -10%,
+      #b5e48c 0%,
+      #99d98c 40%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #f9f9ff 0%, #e7f5f9 100%);
+}
+
+/* === Page Layout === */
+.page {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+/* === Hero Card === */
+.brand {
+  width: 100%;
+  max-width: var(--maxw);
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  align-items: center;
+  gap: 56px;
+  position: relative;
+  padding: 36px 42px;
+  border-radius: var(--radius);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* === Decorative Blobs === */
+.blob {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob.a {
+  width: 360px;
+  height: 360px;
+  left: -120px;
+  top: -120px;
+  background: radial-gradient(
+    circle at 40% 40%,
+    #168aad 0%,
+    #34a0a4 60%,
+    transparent 70%
+  );
+}
+
+.blob.b {
+  width: 300px;
+  height: 300px;
+  right: -100px;
+  bottom: -120px;
+  background: radial-gradient(
+    circle at 60% 60%,
+    #34a0a4 0%,
+    #76c893 60%,
+    transparent 70%
+  );
+}
+
+/* === Foreground Layers === */
+.art,
+.title {
+  position: relative;
+  z-index: 1;
+}
+
+/* === Left Illustration === */
+.art {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px;
+}
+
+.art img {
+  width: min(92%, 360px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.1));
+}
+
+/* === Right Text === */
+.title {
+  line-height: 1.05;
+}
+
+.title .line1 {
+  font-weight: 800;
+  font-size: clamp(44px, 5.4vw, 92px);
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+.title .line2 {
+  display: block;
+  margin-top: 6px;
+  font-weight: 800;
+  font-size: clamp(46px, 5.8vw, 100px);
+  color: var(--accent);
+  letter-spacing: 0.6px;
+  text-shadow: 0 2px 0 #ffffff;
+}
+
+.underline {
+  width: min(260px, 38%);
+  height: 10px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(22, 138, 173, 0.25) inset,
+    0 2px 10px rgba(22, 138, 173, 0.25);
+}
+
+/* === Call to Action Button === */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 16px 26px;
+  font-weight: 800;
+  font-size: clamp(16px, 2.3vw, 18px);
+  color: #fff;
+  background: radial-gradient(
+    120% 200% at 0% 0%,
+    #34a0a4 0%,
+    #168aad 45%,
+    #1a759f 100%
+  );
+  border: 0;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(22, 138, 173, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(22, 138, 173, 0.4);
+  filter: saturate(110%);
+}
+
+.cta:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 24px rgba(22, 138, 173, 0.32);
+}
+
+.cta:focus-visible {
+  outline: 3px solid #99d98c;
+  outline-offset: 3px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid #fff;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .brand {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px 22px 32px;
+    text-align: center;
+  }
+
+  .art {
+    order: -1;
+  }
+
+  .underline {
+    margin-inline: auto;
+  }
+
+  .art img {
+    width: min(70%, 320px);
+  }
+}
