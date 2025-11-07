@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Diabetes Detection</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{% static 'cover.css' %}" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="brand">
+        <div class="blob a" aria-hidden="true"></div>
+        <div class="blob b" aria-hidden="true"></div>
+
+        <div class="art">
+          <img src="{% static 'bg.png' %}" alt="Diabetes detection illustration" />
+        </div>
+
+        <div class="title">
+          <span class="line1">Diabetes</span>
+          <span class="line2">DETECTION</span>
+          <div class="underline" aria-hidden="true"></div>
+
+          <a
+            class="cta"
+            href="{% url 'index' %}"
+            role="button"
+            aria-label="Enter Diabetes Detection app"
+          >
+            Enter
+            <span class="arrow" aria-hidden="true"></span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
