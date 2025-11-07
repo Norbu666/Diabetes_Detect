@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Diabetes Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="contact-box">
+        <div class="left">
+          <img src="{% static 'bg.png' %}" alt="Diabetes illustration" class="hero" />
+          <div class="left-caption">
+            <span class="word1">Diabetes</span><br />
+            <span class="word2">DETECTION</span>
+          </div>
+        </div>
+
+        <div class="right">
+          <h2>Diabetes Detection</h2>
+          <form method="POST" action="{% url 'result' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+              <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                  <div class="error">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            <button class="btn" type="submit"><b>Predict Diabetes</b></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
